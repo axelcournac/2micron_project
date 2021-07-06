@@ -1,1 +1,4 @@
-# 2micron_project
+# project
+
+Some codes and scripts for exercices. 
+
