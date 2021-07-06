@@ -1,4 +1,6 @@
 # project
 
-Some codes and scripts for exercices. 
+Some codes and scripts to reproduce the analyses and plots. 
+
+
 
