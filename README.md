@@ -20,7 +20,7 @@ For windows, you can have a look to https://www.python.org/downloads/windows/. T
 * `hicstuff` / [hicstuff](https://github.com/koszullab/hicstuff)
 * `tinyMapper` / [tinyMapper](   https://github.com/js2264/tinyMapper)
 
-## Raw data extraction and alignment
+### Raw data extraction and alignment
 #### Data extraction
 Data can be dowloaded on Short Read Archive server at the following address **http://www.ncbi.nlm.nih.gov/sra**.
 
@@ -35,5 +35,24 @@ To align the reads and generate the contact files in cool format, we hicstuff pi
 ```bash
 hicstuff pipeline -t 18 -i -D -a bowtie2 --matfmt bg2 --no-cleanup -F -p -o out_Micro-C_WT_log_classic_genome  -g /home/axel/Bureau/YEAST/agnes_test/sacCer3_with_plasmid_2micron/SC288_with_micron SRR7939017.1_1.fastq SRR7939017.1_2.fastq
 ```
+
+### Processing of genomic data like Mnase-seq, ChIP-seq or RNA-seq
+We used tinyMapper: 
+```bash
+./tinyMapper.sh -m RNA -s SRR8503057.1 -g SC288_with_micron_SC88 -o results_RNAseq
+
+./tinyMapper.sh -m ChIP -s SRR7175393.1 -i SRR7175394.1 -g SC288_with_micron_SC88 -o results_CHIP
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
