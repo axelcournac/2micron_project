@@ -47,6 +47,8 @@ We used tinyMapper:
 ./tinyMapper.sh -m RNA -s SRR8503057.1 -g SC288_with_micron_SC88 -o results_RNAseq
 
 ./tinyMapper.sh -m ChIP -s SRR7175393.1 -i SRR7175394.1 -g SC288_with_micron_SC88 -o results_CHIP
+
+./tinyMapper.sh -m MNase -s SRR6246290.1.bis -g SC288_with_micron_SC88 -o results_ATAC-seq
 ```
 
 
