@@ -35,6 +35,10 @@ To align the reads and generate the contact files in cool format, we hicstuff pi
 ```bash
 hicstuff pipeline -t 18 -i -D -a bowtie2 --matfmt bg2 --no-cleanup -F -p -o out_Micro-C_WT_log_classic_genome  -g SC288_with_micron SRR7939017.1_1.fastq SRR7939017.1_2.fastq
 ```
+and convert into cool file:
+```bash
+cooler cload pairs -c1 2 -p1 3 -c2 4 -p2 5 sacCer3.chr_sizes.txt:200 valid_idx_pcrfree.pairs valid_idx_pcrfree.pairs.cool
+```
 
 ### Processing of genomic data like Mnase-seq, ChIP-seq or RNA-seq
 We used tinyMapper: 
