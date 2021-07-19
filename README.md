@@ -51,4 +51,11 @@ We used tinyMapper:
 ./tinyMapper.sh -m RNA -s SRR8503057.1 -g SC288_with_micron_SC88 -o results_RNAseq
 ```
 
+### Visualisation of contact maps with plasmid signal
+
+
+
+
+
+
 
