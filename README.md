@@ -53,6 +53,29 @@ We used tinyMapper:
 
 ### Visualisation of contact maps with plasmid signal
 
+#### Alignment 
+
+```bash
+hicstuff pipeline -t 18 --read-len=50  -D -a bowtie2 -e DpnII,HinfI --matfmt bg2 --no-cleanup -F -p -o out2_pKan-STB-P -g /home/axel/Bureau/YEAST/agnes_test/sacCer3_with_plasmid_pKan-STB-P/SC288_with_pKan-STB-P /media/axel/d0a28364-6c64-4f8e-9efc-f332d9a0f1a91/20210716_FG/FG104_S2_R1_001.fastq.gz /media/axel/d0a28364-6c64-4f8e-9efc-f332d9a0f1a91/20210716_FG/FG104_S2_R2_001.fastq.gz
+```
+#### Convertion into cool file:
+```bash
+cooler cload pairs --zero-based -c1 1 -p1 2 -c2 4 -p2 5 /home/axel/Bureau/YEAST/agnes_test/sacCer3_with_plasmid_pKan-STB-P/sacCer3.chr_sizes.txt:2000  out2_pKan-STB-P/tmp/valid_idx_pcrfree.pairs  out2_pKan-STB-P/tmp/valid_idx_pcrfree.pairs.cool 
+```
+
+#### Visualisation of contact maps
+```bash
+python3 /home/axel/Bureau/z_python_scripts_copy/plasmid_micron2_hot_spots_ARG1.py out2_pKan-STB-P/tmp/valid_idx_pcrfree.pairs.cool     pKan-STB-P     pKan-STB-P
+```
+To have the 1D enrichment plot for contact signal of the plasmid:
+
+```bash
+python3 plasmid_HSC_1D_agglo.py out2_pKan-STB-P/tmp/valid_idx_pcrfree.pairs.cool     pKan-STB-P      pKan-STB-P      /home/axel/Bureau/YEAST/HSC_plasmids_in.txt
+```
+
+
+
+
 
 
 
