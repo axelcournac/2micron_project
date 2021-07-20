@@ -15,12 +15,6 @@ import random
 import sys
 import os
 sys.path.insert(0, os.path.abspath("/home/axel/Bureau/z_python_scripts_copy"))
-import scn 
-import ice_mirny3
-import scipy
-import scipy.ndimage
-import scipy.io as sio
-import distance_law_human
 import hicstuff as hcs
 import numpy as np
 import json
@@ -36,23 +30,23 @@ number_of_colors = 8
 color = ["#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)])
              for i in range(number_of_colors)]
 
-
-cool_file="/media/axel/RSG4/diverse_yeast_data/quiescence_2019/fastq/out_Micro-C_WT_log_redone/tmp/valid_idx_pcrfree.pairs.cool.200"
-name_bank = "Micro-C_WT_log_redone"
-
 # input data:
 cool_file = sys.argv[1]
 name_bank = sys.argv[2]
 plasmid_chosen = sys.argv[3]
+
+# default data
+cool_file="/media/axel/d0a28364-6c64-4f8e-9efc-f332d9a0f1a91/quiescence_paper/fastq_sam/out_Micro-C_WT_log_SC288_genome/tmp/valid_idx_pcrfree.pairs.cool"
+name_bank = "Micro-C_WT_log_SC288_genome"
+plasmid_chosen = 'plasmid_p2-micron'
 
 #----------
 if not os.path.exists(name_bank+"_files") :
     os.makedirs(name_bank+"_files")
 
 c = cooler.Cooler(cool_file)
-cooler.balance_cooler(c, store=True, mad_max=15)   # Normalisation 
+cooler.balance_cooler(c, store=True, mad_max=10)   # Normalisation 
 
- 
 # SC288 assembly:
 BIN=200
 centro = pd.read_table("/home/axel/Bureau/YEAST/centro1.dat4",
@@ -201,6 +195,7 @@ for chr1 in list_chr :
     fig.tight_layout(pad=2.)
     plt.savefig(name_bank+"_files"+'/MAT_SCN_'+chr1+"_"+
             name_bank+"_"+str(BIN/1000)+"kb"+'.pdf')
+    
     
     
     
