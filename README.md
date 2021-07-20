@@ -72,7 +72,7 @@ To have the 1D enrichment plot for contact signal of the plasmid:
 ```bash
 python3 plasmid_HSC_1D_agglo.py out2_pKan-STB-P/tmp/valid_idx_pcrfree.pairs.cool     pKan-STB-P      pKan-STB-P      /home/axel/Bureau/YEAST/HSC_plasmids_in.txt
 ```
-
+To automatically detect the peaks of contact between plasmid and yeast chromosomes, we use plasmid_micron2_hot_spots_ARG1_fig_sup1_2.py 
 
 
 
