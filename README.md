@@ -73,6 +73,6 @@ To have the 1D enrichment plot for contact signal of the plasmid:
  python3 plasmid_HSC_1D_agglo_norm2.py  valid_idx_pcrfree.pairs.cool plasmid_p2-micron topo2 HSC_plasmids_in_Micro-C_WT_log_SC288_genome.txt.sort.formated
  ```
  
-To automatically detect the peaks of contact between plasmid and yeast chromosomes, we use plasmid_micron2_hot_spots_ARG1_fig_sup1_2.py 
+To automatically detect the peaks of contact between plasmid and yeast chromosomes, we use plasmid_micron2_hot_spots_ARG1_fig_sup1_norm3.py 
 
 
