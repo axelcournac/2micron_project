@@ -82,9 +82,11 @@ creation of bw file with the python code then
 
 ```bash
 
-computeMatrix scale-regions -S signal_contact_2micron_plasmid.bw -R /home/axel/Bureau/YEAST/GENES_SC288/long_genes_only_host_chrm.txt2  --beforeRegionStartLength 3000 --regionBodyLength 7000 --afterRegionStartLength 3000 --outFileName signal_2u_genes.gz
+computeMatrix scale-regions -S /home/axel/Bureau/2micron_plasmid_PROJECT/pileup_gene_deep_tools/Micro-C_WT_log_redone_plasmid_contact_signal.bw   -R /home/axel/Bureau/YEAST/GENES_SC288/long_genes_only_host_chrm.txt2  --beforeRegionStartLength 7000 --regionBodyLength 7000 --afterRegionStartLength  7000 --outFileName signal_2u_genes.gz 
 
-plotProfile -m signal_2u_genes.gz -out ExampleProfile1.png --numPlotsPerRow 2  --plotTitle "Test data profile"
+Skipping chr16:760025-767494, due to being absent in the computeMatrix output.
+
+plotProfile -m signal_2u_genes.gz -out Profile_contact_long_genes.pdf --numPlotsPerRow 2  --plotTitle "Contact signal at long gene (size>7b)"
 ```
 
 
