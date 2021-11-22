@@ -76,3 +76,26 @@ To have the 1D enrichment plot for contact signal of the plasmid:
 To automatically detect the peaks of contact between plasmid and yeast chromosomes, we use plasmid_micron2_hot_spots_ARG1_fig_sup1_norm3.py 
 
 
+
+#### Computation of pileup plot according the gene structure: 
+creation of bw file with the python code then
+
+```bash
+
+computeMatrix scale-regions -S signal_contact_2micron_plasmid.bw -R /home/axel/Bureau/YEAST/GENES_SC288/long_genes_only_host_chrm.txt2  --beforeRegionStartLength 3000 --regionBodyLength 7000 --afterRegionStartLength 3000 --outFileName signal_2u_genes.gz
+
+plotProfile -m signal_2u_genes.gz -out ExampleProfile1.png --numPlotsPerRow 2  --plotTitle "Test data profile"
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
