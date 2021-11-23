@@ -18,8 +18,8 @@ For windows, you can have a look to https://www.python.org/downloads/windows/. T
 
 * `Bowtie2 ` / [bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml)
 * `hicstuff` / [hicstuff](https://github.com/koszullab/hicstuff)
-* `tinyMapper` / [tinyMapper](https://github.com/js2264/tinyMapper)
 * `cooler` / [cooler](https://github.com/open2c/cooler)
+* `tinyMapper` / [tinyMapper](https://github.com/js2264/tinyMapper)
 * `deepTools` / [deepTools](https://deeptools.readthedocs.io/en/develop/)
 * RIdeogram / [RIdeogram](https://cran.r-project.org/web/packages/RIdeogram/vignettes/RIdeogram.html)
 
