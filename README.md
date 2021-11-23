@@ -20,6 +20,7 @@ For windows, you can have a look to https://www.python.org/downloads/windows/. T
 * `hicstuff` / [hicstuff](https://github.com/koszullab/hicstuff)
 * `tinyMapper` / [tinyMapper](https://github.com/js2264/tinyMapper)
 * `cooler` / [cooler](https://github.com/open2c/cooler)
+* `deepTools` / [deepTools](https://deeptools.readthedocs.io/en/develop/)
 
 ### Raw data extraction and alignment
 #### Data extraction
