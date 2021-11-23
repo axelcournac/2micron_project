@@ -89,8 +89,11 @@ Skipping chr16:760025-767494, due to being absent in the computeMatrix output.
 plotProfile -m signal_2u_genes.gz -out Profile_contact_long_genes.pdf --numPlotsPerRow 2  --plotTitle "Contact signal at long gene (size>7b)"
 ```
 
-
-
+#### 
+To plot the agglomerated plots of contact signal around centromeres: 
+```bash
+python3 /home/axel/Bureau/z_python_scripts_copy/plasmid_HSC_1D_agglo_norm2.py  /media/axel/RSG4/diverse_yeast_data/quiescence_2019/fastq/out_Micro-C_WT_log_redone/tmp/valid_idx_pcrfree.pairs.cool  plasmid_p2-micron log_centros  /home/axel/Bureau/YEAST/centro1.dat55
+```
 
 
 
