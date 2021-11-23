@@ -35,6 +35,7 @@ if not os.path.exists(name_bank+"_files") :
 
 c = cooler.Cooler(cool_file)
 cooler.balance_cooler(c, store=True, mad_max=10)   # Normalisation 
+#cooler.balance_cooler(c, store=True)   
 
 list_chr1 = c.chromnames
 
@@ -50,7 +51,7 @@ input_file_type = 1
 name_pos_set= name_bank
 
 if plasmid_chosen == "None":
-    chr2 = "plasmid_p2-micron"   
+    chr2 = "plasmid_p2-micron"
 else :
     chr2 = plasmid_chosen 
 
@@ -279,15 +280,19 @@ for i in range(len(p12)) :
         
         plt.savefig(name_bank+"_files/"+'_'+chr1+'_'+str(pos1)+
                     "_"+name_bank+"_"+str(BIN/1000)+"kb_scn"+'.pdf')
-plt.close("all")    
+plt.close("all")  
 
 #  Plottings:  
 plt.imshow(list_all_contact2, interpolation="none")
 plt.savefig(name_bank+"_files/all_HSC_"+
                 "_"+name_bank+"_"+str(BIN/1000)+"kb_scn"+'.pdf')
 plt.close("all")    
-   
+  
+np.savetxt(name_bank+"_files/all_HSC_"+
+                "_"+name_bank+"_"+str(BIN/1000)+"kb_scn"+'.txt',list_all_contact2)
+ 
 # Agglomerated plot: 
+plt.figure(figsize=(3, 2.7))
 plt.title("Profile of contacts of plasmid "+chr2+"\nwith the "
           +str(len(p12))+" HSC, perc. of plasmid "+str(perc_plasmid))
 
@@ -314,7 +319,7 @@ plt.xticks(tick_locs, tick_lbls,fontsize=15,rotation=45)
 
 plt.subplots_adjust(bottom=0.2)
 plt.subplots_adjust(left=0.2)
-#plt.ylim(0.0,0.0011)
+plt.ylim(0.,np.max(moy+std/2.0))
 plt.xlim(0.,40.)
 plt.savefig(name_bank+"_files/agglomerated_signal_on_HSC_"+
                 "_"+name_bank+"_"+str(BIN/1000)+"kb_scn"+'.pdf')
