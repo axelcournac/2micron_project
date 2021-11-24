@@ -33,7 +33,7 @@ A SRA executable called fastq-dump from SRA can be used to extract and split bot
 ./fastq-dump SRR639031 --split-3 -O /home/axel/data/
 ```
 
-#### Alignment
+#### Alignment of the Hi-C libraries
 To align the reads and generate the contact files in cool format, we hicstuff pipeline: 
 ```bash
 hicstuff pipeline -t 18 -i -D -a bowtie2 --matfmt bg2 --no-cleanup -F -p -o out_Micro-C_WT_log_classic_genome  -g SC288_with_micron SRR7939017.1_1.fastq SRR7939017.1_2.fastq
@@ -80,13 +80,11 @@ To automatically detect the peaks of contact between plasmid and yeast chromosom
 
 
 #### Computation of pileup plot according the gene structure: 
-creation of bw file with the python code then
+creation of bw file with the python code create_big_wig.py then
 
 ```bash
 
 computeMatrix scale-regions -S /home/axel/Bureau/2micron_plasmid_PROJECT/pileup_gene_deep_tools/Micro-C_WT_log_redone_plasmid_contact_signal.bw   -R /home/axel/Bureau/YEAST/GENES_SC288/long_genes_only_host_chrm.txt2  --beforeRegionStartLength 7000 --regionBodyLength 7000 --afterRegionStartLength  7000 --outFileName signal_2u_genes.gz 
-
-Skipping chr16:760025-767494, due to being absent in the computeMatrix output.
 
 plotProfile -m signal_2u_genes.gz -out Profile_contact_long_genes.pdf --numPlotsPerRow 2  --plotTitle "Contact signal at long gene (size>7b)"
 ```
@@ -96,7 +94,6 @@ To plot the agglomerated plots of contact signal around centromeres:
 ```bash
 python3 /home/axel/Bureau/z_python_scripts_copy/plasmid_HSC_1D_agglo_norm2.py  /media/axel/RSG4/diverse_yeast_data/quiescence_2019/fastq/out_Micro-C_WT_log_redone/tmp/valid_idx_pcrfree.pairs.cool  plasmid_p2-micron log_centros  /home/axel/Bureau/YEAST/centro1.dat55
 ```
-
 
 ### Generation and visualisation of scatter plot for the ChIP-exo libraries
 
