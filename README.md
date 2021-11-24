@@ -98,6 +98,10 @@ python3 /home/axel/Bureau/z_python_scripts_copy/plasmid_HSC_1D_agglo_norm2.py  /
 ```
 
 
+### Generation and visualisation of scatter plot for the ChIP-exo libraries
+
+We use the code density_scatter_plot5.py 
+
 
 
 
