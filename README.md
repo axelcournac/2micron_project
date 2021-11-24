@@ -121,7 +121,7 @@ We use the code density_scatter_plot5.py to generate the plot.
 ```bash
 seqkit fx2tab sequences_73HSC.txt -n --length --gc --gc-skew --header-line > gc_content_73HSC.txt
 
-dnaglider-linux -window 10000 -threads 8 -fields "GC,GCSKEW" -fasta /home/axel/Bureau/YEAST/agnes_test/sacCer3_with_plasmid_2micron/SC288_with_micron.fa  -out gc_stats.tsv
+dnaglider-linux -window 10000 -threads 8 -fields "GC,GCSKEW" -fasta SC288_with_micron.fa  -out gc_stats.tsv
 
 ```
 
