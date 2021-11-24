@@ -115,6 +115,17 @@ fi; done
 
 We use the code density_scatter_plot5.py to generate the plot. 
 
+### Computation of GC content for regions contacted by the plasmid and the whole genome
+
+
+```bash
+seqkit fx2tab sequences_73HSC.txt -n --length --gc --gc-skew --header-line > gc_content_73HSC.txt
+
+dnaglider-linux -window 10000 -threads 8 -fields "GC,GCSKEW" -fasta /home/axel/Bureau/YEAST/agnes_test/sacCer3_with_plasmid_2micron/SC288_with_micron.fa  -out gc_stats.tsv
+
+```
+
+
 
 
 
