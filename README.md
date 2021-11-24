@@ -100,7 +100,21 @@ python3 /home/axel/Bureau/z_python_scripts_copy/plasmid_HSC_1D_agglo_norm2.py  /
 
 ### Generation and visualisation of scatter plot for the ChIP-exo libraries
 
-We use the code density_scatter_plot5.py 
+After alignment with bowtie2 of the 1251 libraries, we filterd the reads with MQ>0 and then process all the files: 
+
+```bash
+#!/bin/bash
+
+for i in *.fastq.sam.MQ0 ; 
+do j=$(echo $i | grep -E -o  SRR[0-9]+) ; 
+if [ ! -f "1D_ENRICHMENT_HSC_"$j"_73Hot_spots_plasmid.pdf" ];
+then 
+echo $j;
+python3 /home/axel/Bureau/z_python_scripts_copy/plasmid_micron2_Chip-seq_ARG3.py $i $i; 
+fi; done
+```
+
+We use the code density_scatter_plot5.py to generate the plot. 
 
 
 
