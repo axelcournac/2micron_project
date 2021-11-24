@@ -21,7 +21,9 @@ For windows, you can have a look to https://www.python.org/downloads/windows/. T
 * `cooler` / [cooler](https://github.com/open2c/cooler)
 * `tinyMapper` / [tinyMapper](https://github.com/js2264/tinyMapper)
 * `deepTools` / [deepTools](https://deeptools.readthedocs.io/en/develop/)
-* RIdeogram / [RIdeogram](https://cran.r-project.org/web/packages/RIdeogram/vignettes/RIdeogram.html)
+* `RIdeogram` / [RIdeogram](https://cran.r-project.org/web/packages/RIdeogram/vignettes/RIdeogram.html)
+* `seqkit`   /   [seqkit](https://bioinf.shenwei.me/seqkit/)
+* `dnaglider`   /   [dnaglider](https://github.com/cmdoret/dnaglider)
 
 ### Raw data extraction and alignment
 #### Data extraction
