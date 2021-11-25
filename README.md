@@ -60,11 +60,11 @@ We used tinyMapper:
 #### Alignment 
 
 ```bash
-hicstuff pipeline -t 18 --read-len=50  -D -a bowtie2 -e DpnII,HinfI --matfmt bg2 --no-cleanup -F -p -o out2_pKan-STB-P -g /home/axel/Bureau/YEAST/agnes_test/sacCer3_with_plasmid_pKan-STB-P/SC288_with_pKan-STB-P /media/axel/d0a28364-6c64-4f8e-9efc-f332d9a0f1a91/20210716_FG/FG104_S2_R1_001.fastq.gz /media/axel/d0a28364-6c64-4f8e-9efc-f332d9a0f1a91/20210716_FG/FG104_S2_R2_001.fastq.gz
+hicstuff pipeline -t 18 --read-len=50  -D -a bowtie2 -e DpnII,HinfI --matfmt bg2 --no-cleanup -F -p -o out2_pKan-STB-P -g SC288_with_pKan-STB-P     FG104_S2_R1_001.fastq.gz FG104_S2_R2_001.fastq.gz
 ```
 #### Convertion into cool file:
 ```bash
-cooler cload pairs --zero-based -c1 1 -p1 2 -c2 4 -p2 5 /home/axel/Bureau/YEAST/agnes_test/sacCer3_with_plasmid_pKan-STB-P/sacCer3.chr_sizes.txt:2000  out2_pKan-STB-P/tmp/valid_idx_pcrfree.pairs  out2_pKan-STB-P/tmp/valid_idx_pcrfree.pairs.cool 
+cooler cload pairs --zero-based -c1 1 -p1 2 -c2 4 -p2 5 /sacCer3.chr_sizes.txt:2000  out2_pKan-STB-P/tmp/valid_idx_pcrfree.pairs  out2_pKan-STB-P/tmp/valid_idx_pcrfree.pairs.cool 
 ```
 
 #### Visualisation of contact maps
@@ -86,7 +86,7 @@ creation of bw file with the python code create_big_wig.py then
 
 ```bash
 
-computeMatrix scale-regions -S /home/axel/Bureau/2micron_plasmid_PROJECT/pileup_gene_deep_tools/Micro-C_WT_log_redone_plasmid_contact_signal.bw   -R /home/axel/Bureau/YEAST/GENES_SC288/long_genes_only_host_chrm.txt2  --beforeRegionStartLength 7000 --regionBodyLength 7000 --afterRegionStartLength  7000 --outFileName signal_2u_genes.gz 
+computeMatrix scale-regions -S Micro-C_WT_log_redone_plasmid_contact_signal.bw   -R long_genes_only_host_chrm.txt2  --beforeRegionStartLength 7000 --regionBodyLength 7000 --afterRegionStartLength  7000 --outFileName signal_2u_genes.gz 
 
 plotProfile -m signal_2u_genes.gz -out Profile_contact_long_genes.pdf --numPlotsPerRow 2  --plotTitle "Contact signal at long gene (size>7b)"
 ```
@@ -94,7 +94,7 @@ plotProfile -m signal_2u_genes.gz -out Profile_contact_long_genes.pdf --numPlots
 #### 
 To plot the agglomerated plots of contact signal around centromeres: 
 ```bash
-python3 /home/axel/Bureau/z_python_scripts_copy/plasmid_HSC_1D_agglo_norm2.py  /media/axel/RSG4/diverse_yeast_data/quiescence_2019/fastq/out_Micro-C_WT_log_redone/tmp/valid_idx_pcrfree.pairs.cool  plasmid_p2-micron log_centros  /home/axel/Bureau/YEAST/centro1.dat55
+python3 plasmid_HSC_1D_agglo_norm2.py  valid_idx_pcrfree.pairs.cool  plasmid_p2-micron log_centros centro1.dat55
 ```
 
 ### Generation and visualisation of scatter plot for the ChIP-exo libraries
@@ -124,13 +124,3 @@ seqkit fx2tab sequences_73HSC.txt -n --length --gc --gc-skew --header-line > gc_
 dnaglider-linux -window 10000 -threads 8 -fields "GC,GCSKEW" -fasta SC288_with_micron.fa  -out gc_stats.tsv
 
 ```
-
-
-
-
-
-
-
-
-
-
