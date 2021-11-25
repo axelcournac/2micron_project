@@ -109,14 +109,13 @@ do j=$(echo $i | grep -E -o  SRR[0-9]+) ;
 if [ ! -f "1D_ENRICHMENT_HSC_"$j"_73Hot_spots_plasmid.pdf" ];
 then 
 echo $j;
-python3 /home/axel/Bureau/z_python_scripts_copy/plasmid_micron2_Chip-seq_ARG3.py $i $i; 
+python3 plasmid_micron2_Chip-seq_ARG3.py $i $i; 
 fi; done
 ```
 
 We use the code density_scatter_plot5.py to generate the plot. 
 
-### Computation of GC content for regions contacted by the plasmid and the whole genome
-
+#### Computation of GC content for regions contacted by the plasmid and the whole genome
 
 ```bash
 seqkit fx2tab sequences_73HSC.txt -n --length --gc --gc-skew --header-line > gc_content_73HSC.txt
