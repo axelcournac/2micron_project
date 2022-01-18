@@ -113,6 +113,8 @@ python3 plasmid_micron2_Chip-seq_ARG3.py $i $i;
 fi; done
 ```
 
+repo: /media/axel/RSG4/diverse_yeast_data/CHip_seq_2018
+
 We use the code density_scatter_plot5.py to generate the plot. 
 
 #### Computation of GC content for regions contacted by the plasmid and the whole genome
