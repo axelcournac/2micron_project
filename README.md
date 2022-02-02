@@ -16,7 +16,8 @@ For windows, you can have a look to https://www.python.org/downloads/windows/. T
 
 #### External programs
 
-* `Bowtie2 ` / [bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml)
+* `SRA tools` / [SRA tools](https://github.com/ncbi/sra-tools)
+* `Bowtie2` / [bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml)
 * `hicstuff` / [hicstuff](https://github.com/koszullab/hicstuff)
 * `cooler` / [cooler](https://github.com/open2c/cooler)
 * `tinyMapper` / [tinyMapper](https://github.com/js2264/tinyMapper)
