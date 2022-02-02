@@ -1,6 +1,6 @@
 #  µproject
 
-Some codes and scripts to reproduce the analyses and plots. 
+Codes and scripts to reproduce the analyses and plots. 
 
 
 ### Dependencies
