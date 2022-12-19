@@ -106,11 +106,11 @@ python3 plasmid_HSC_1D_agglo_norm2.py  valid_idx_pcrfree.pairs.cool  plasmid_p2-
 
 ```bash
 file_set_positions="/home/axel/Bureau/figure_all_chrms_sup1/redone_norm3/th_08/HSC_plasmids_in_Micro-C_WT_log_SC288_genome.txt.sort.formated"
-cool_file1="/media/axel/RSG4/FG_20221214/out_FG0171/tmp/valid_idx_pcrfree.pairs.2000.cool"
-cool_file2="/media/axel/RSG4/FG_20221214/out_FG0170_4/tmp/valid_idx_pcrfree.pairs.2000.cool"
+cool_file1="out_FG01/tmp/valid_idx_pcrfree.pairs.2000.cool"
+cool_file2="out_FG02_4/tmp/valid_idx_pcrfree.pairs.2000.cool"
 
-name1="FG171"
-name2="FG170"
+name1="FG1"
+name2="FG2"
 
 python3 /home/axel/Bureau/z_python_scripts_copy/plasmid_HSC_1D_agglo_norm2.py $cool_file1 plasmid_p2-micron $name1  $file_set_positions
 python3 /home/axel/Bureau/z_python_scripts_copy/plasmid_HSC_1D_agglo_norm2.py $cool_file2 plasmid_p2-micron $name2  $file_set_positions
