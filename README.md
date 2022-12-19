@@ -102,6 +102,26 @@ To plot the agglomerated plots of contact signal around centromeres:
 python3 plasmid_HSC_1D_agglo_norm2.py  valid_idx_pcrfree.pairs.cool  plasmid_p2-micron log_centros centro1.dat55
 ```
 
+### Generation and comparison of agglomerated plot of contact signal of 2 micron:
+
+```bash
+file_set_positions="/home/axel/Bureau/figure_all_chrms_sup1/redone_norm3/th_08/HSC_plasmids_in_Micro-C_WT_log_SC288_genome.txt.sort.formated"
+cool_file1="/media/axel/RSG4/FG_20221214/out_FG0171/tmp/valid_idx_pcrfree.pairs.2000.cool"
+cool_file2="/media/axel/RSG4/FG_20221214/out_FG0170_4/tmp/valid_idx_pcrfree.pairs.2000.cool"
+
+name1="FG171"
+name2="FG170"
+
+python3 /home/axel/Bureau/z_python_scripts_copy/plasmid_HSC_1D_agglo_norm2.py $cool_file1 plasmid_p2-micron $name1  $file_set_positions
+python3 /home/axel/Bureau/z_python_scripts_copy/plasmid_HSC_1D_agglo_norm2.py $cool_file2 plasmid_p2-micron $name2  $file_set_positions
+
+file1='/home/axel/Bureau/compare_agglo_redone_ylim/'$name1'_files/agglomerated_signal_on_HSC__'$name1'_2.0kb_norm2.txt'
+file2='/home/axel/Bureau/compare_agglo_redone_ylim/'$name2'_files/agglomerated_signal_on_HSC__'$name2'_2.0kb_norm2.txt'
+
+python3 /home/axel/Bureau/z_python_scripts_copy/plot_agglo_HSC2_norm2_arg_n.py  2 $file1 $file2 $name1 $name2 
+
+```
+
 ### Generation and visualisation of scatter plot for the ChIP-exo libraries
 
 After alignment with bowtie2 of the 1251 libraries, we filterd the reads with MQ>0 and then process all the files: 
