@@ -34,13 +34,19 @@ from scipy.stats.stats import pearsonr
 import statsmodels.api as sm
 lowess = sm.nonparametric.lowess
 
+
+# function for nan sum
+def nan_sum(row):
+    total = np.nanmean(row)*len(row[~np.isnan(row)])
+    return total
+
 # contact data:
 cool_file= "/media/axel/RSG4/diverse_yeast_data/quiescence_2019/fastq/out_Micro-C_WT_log_redone/tmp/valid_idx_pcrfree.pairs.cool.200"
 name_bank= "Log_200"
 
 # cooler cload pairs -c1 2 -p1 3 -c2 4 -p2 5 /home/axel/Bureau/YEAST/agnes_test/sacCer3_with_plasmid_2micron/sacCer3.chr_sizes.txt:2000 valid_idx_pcrfree.pairs valid_idx_pcrfree.pairs.cool
 c = cooler.Cooler(cool_file)
-cooler.balance_cooler(c, store=True, mad_max=10)   # Normalisation 
+cooler.balance_cooler(c, store=True, mad_max=3)   # Normalisation 
 d=c.info
 total_reads = d['sum']
 # SC288 assembly:
@@ -176,8 +182,10 @@ for chr1 in list_chr :
     
     # contact with plasmid 
     matscn = c.matrix().fetch(chr1, chr2) # ! we focus on the region of contact
-    matscn[np.isnan(matscn)] = 0 
-    contact_with_plasmid = matscn.sum(axis=1)
+#    matscn[np.isnan(matscn)] = 0 
+    
+#    contact_with_plasmid = matscn.sum(axis=1)
+    contact_with_plasmid = np.apply_along_axis(nan_sum, 1, matscn)
     contact_with_plasmid_dict[chr1] = contact_with_plasmid
 
 
@@ -220,8 +228,11 @@ plt.show()
 plt.xlabel("Gene size (in bp)")
 plt.ylabel("Contact with 2 micron plasmid")
 
-plt.axhline(y=np.mean(list_all_contact),ls='--',color="Black")
+plt.axhline(y=np.nanmean(list_all_contact),ls='--',color="Black")
 plt.colorbar()
+
+list_all_sizes= list_all_sizes[np.isnan(list_all_contact)]
+list_all_contact= list_all_contact[np.isnan(list_all_contact)]
 
 PC=pearsonr(list_all_sizes,list_all_contact)
 
