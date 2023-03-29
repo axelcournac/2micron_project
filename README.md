@@ -71,6 +71,7 @@ cooler cload pairs --zero-based -c1 1 -p1 2 -c2 4 -p2 5 /sacCer3.chr_sizes.txt:2
 #### Visualisation of contact maps
 ```bash
 python3 plasmid_micron2_hot_spots_ARG1.py out2_pKan-STB-P/tmp/valid_idx_pcrfree.pairs.cool     pKan-STB-P     pKan-STB-P
+python3 plasmid_micron_its_Map.py  valid_idx_pcrfree.pairs.cool.200 plasmid_p2-micron micro-C-log_redone
 ```
 To have the 1D enrichment plot for contact signal of the plasmid:
 
