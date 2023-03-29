@@ -32,14 +32,17 @@ color = ["#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)])
 
 # input data:
 cool_file = sys.argv[1]
-name_bank = sys.argv[2]
-plasmid_chosen = sys.argv[3]
+plasmid_chosen = sys.argv[2]
+name_bank = sys.argv[3]
 
 # default data
-cool_file="/media/axel/d0a28364-6c64-4f8e-9efc-f332d9a0f1a91/quiescence_paper/fastq_sam/out_Micro-C_WT_log_SC288_genome/tmp/valid_idx_pcrfree.pairs.cool"
-name_bank = "Micro-C_WT_log_SC288_genome"
-plasmid_chosen = 'plasmid_p2-micron'
+#cool_file="/media/axel/d0a28364-6c64-4f8e-9efc-f332d9a0f1a91/quiescence_paper/fastq_sam/out_Micro-C_WT_log_SC288_genome/tmp/valid_idx_pcrfree.pairs.cool"
+#name_bank = "Micro-C_WT_log_SC288_genome"
+#plasmid_chosen = 'plasmid_p2-micron'
 
+#cool_file="/media/axel/9e657c5d-6ac3-494e-81af-b25e389d59bd/HI-CO_2021/out_Hi_CO_WT/tmp/valid_idx_pcrfree.pairs.cool"
+#name_bank = "Hi_CO_WT"
+#plasmid_chosen = 'plasmid_p2-micron'
 #----------
 if not os.path.exists(name_bank+"_files") :
     os.makedirs(name_bank+"_files")
@@ -58,7 +61,7 @@ centro_dist = dict(zipbObj)
 centro_dist['chrM'] = 0
 centro_dist['plasmid_p2-micron'] = 0
 
-sizes = pd.read_table("/home/axel/Bureau/YEAST/agnes_test/sacCer3_with_plasmid_2micron_pYADE4/sacCer3.chr_sizes.txt",
+sizes = pd.read_table("/home/axel/Bureau/YEAST/agnes_test/sacCer3_with_plasmid_2micron_construction/sacCer3.chr_sizes.txt",
                       header=None, delimiter="\t") 
 zipbObj = zip(sizes[0], sizes[1])
 sizes_dist = dict(zipbObj)
@@ -196,6 +199,4 @@ for chr1 in list_chr :
     plt.savefig(name_bank+"_files"+'/MAT_SCN_'+chr1+"_"+
             name_bank+"_"+str(BIN/1000)+"kb"+'.pdf')
     
-    
-    
-    
+      
