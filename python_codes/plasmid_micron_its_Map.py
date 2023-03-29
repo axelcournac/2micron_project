@@ -48,7 +48,7 @@ if not os.path.exists(name_bank+"_files") :
     os.makedirs(name_bank+"_files")
 
 c = cooler.Cooler(cool_file)
-cooler.balance_cooler(c, store=True, mad_max=10)   # Normalisation 
+cooler.balance_cooler(c, store=True, mad_max=15)   # Normalisation 
 
 # SC288 assembly:
 BIN=200
