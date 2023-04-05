@@ -55,7 +55,7 @@ We used tinyMapper:
 
 ./tinyMapper.sh -m MNase -s SRR11235539.1 -g SC288_with_micron_SC88 -o results_ATAC-seq
 
-./tinyMapper.sh -m ChIP -s SRR7175393.1 -i SRR7175394.1 -g SC288_with_micron_SC88 -o results_CHIP
+./tinyMapper.sh -m ChIP -s SRR7175393.1 -i SRR7175394.1 -g SC288_with_micron_SC88 -o results_CHIP_Rpb3
 
 ```
 
