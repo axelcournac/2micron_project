@@ -74,7 +74,7 @@ cooler cload pairs --zero-based -c1 1 -p1 2 -c2 4 -p2 5 /sacCer3.chr_sizes.txt:2
 #### Visualisation of contact maps
 ```bash
 python3 plasmid_micron2_hot_spots_ARG1.py out2_pKan-STB-P/tmp/valid_idx_pcrfree.pairs.cool     pKan-STB-P     pKan-STB-P
-python3 plasmid_micron_its_Map.py  valid_idx_pcrfree.pairs.cool.200 plasmid_p2-micron micro-C-log_redone
+python3 plasmid_micron_its_Map.py  valid_idx_pcrfree.pairs.cool.200 plasmid_p2-micron micro-C-log
 ```
 To have the 1D enrichment plot for contact signal of the plasmid:
 
@@ -87,8 +87,22 @@ To automatically detect the peaks of contact between plasmid and yeast chromosom
 #### Plot of genomic signals agglomerated around hot spots of contact: 
 
 ```bash
-python /home/axel/Bureau/z_python_scripts_copy/plasmid_micron2_Chip-seq_ARG5.py SRR13736589.bis.fastq.sam.MQ0 SRR13736587.bis.fastq.sam.MQ0 H3_log H3_log
+python plasmid_micron2_Chip-seq_ARG5.py SRR13736589.bis.fastq.sam.MQ0 SRR13736587.bis.fastq.sam.MQ0 H3_log H3_log
 ```
+#### Computation of pileup plot on the 73 loci contacted by 2u plasmid: 
+
+```bash
+computeMatrix scale-regions  -S  Micro-C_WT_log_interpolated.bw -R HSC_73.bed2  --beforeRegionStartLength 20000  --regionBodyLength 10  --afterRegionStartLength 20000  --sortRegions keep -o heatmap.gz
+
+plotHeatmap -m heatmap.gz -out heat_map_contact_best.pdf --colorMap afmhot_r  --missingDataColor white --sortRegions keep
+
+
+computeMatrix reference-point -S results_ChIP_WT_Pol2/tracks/SRR1916157/SRR1916157^mapped_SC288_with_micron_SC88^K4V2CT.vs-SRR1916162.bw -R HSC_73.bed2  --beforeRegionStartLength 20000  --regionBodyLength 10  --afterRegionStartLength 20000  --sortRegions keep -o heatmap.gz
+
+plotHeatmap -m heatmap.gz -out heat_map_pol2_best.pdf --colorMap Blues_r --missingDataColor grey  --sortRegions keep  --zMin 0.6 --zMax 1.2 --interpolationMethod  nearest
+
+```
+
 
 #### Computation of pileup plot according the gene structure: 
 creation of bw file with the python code create_big_wig.py then
@@ -116,13 +130,13 @@ cool_file2="out_FG02_4/tmp/valid_idx_pcrfree.pairs.2000.cool"
 name1="FG1"
 name2="FG2"
 
-python3 /home/axel/Bureau/z_python_scripts_copy/plasmid_HSC_1D_agglo_norm2.py $cool_file1 plasmid_p2-micron $name1  $file_set_positions
-python3 /home/axel/Bureau/z_python_scripts_copy/plasmid_HSC_1D_agglo_norm2.py $cool_file2 plasmid_p2-micron $name2  $file_set_positions
+python3 plasmid_HSC_1D_agglo_norm2.py $cool_file1 plasmid_p2-micron $name1  $file_set_positions
+python3 plasmid_HSC_1D_agglo_norm2.py $cool_file2 plasmid_p2-micron $name2  $file_set_positions
 
 file1='/home/axel/Bureau/compare_agglo_redone_ylim/'$name1'_files/agglomerated_signal_on_HSC__'$name1'_2.0kb_norm2.txt'
 file2='/home/axel/Bureau/compare_agglo_redone_ylim/'$name2'_files/agglomerated_signal_on_HSC__'$name2'_2.0kb_norm2.txt'
 
-python3 /home/axel/Bureau/z_python_scripts_copy/plot_agglo_HSC2_norm2_arg_n.py  2 $file1 $file2 $name1 $name2 
+python3 plot_agglo_HSC2_norm2_arg_n.py  2 $file1 $file2 $name1 $name2 
 
 ```
 
