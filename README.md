@@ -89,6 +89,7 @@ To automatically detect the peaks of contact between plasmid and yeast chromosom
 ```bash
 python plasmid_micron2_Chip-seq_ARG5.py SRR13736589.bis.fastq.sam.MQ0 SRR13736587.bis.fastq.sam.MQ0 H3_log H3_log
 ```
+
 #### Computation of pileup plot on the 73 loci contacted by 2u plasmid: 
 
 ```bash
