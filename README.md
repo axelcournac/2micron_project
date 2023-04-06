@@ -100,8 +100,13 @@ plotHeatmap -m heatmap.gz -out heat_map_contact_best.pdf --colorMap afmhot_r  --
 
 computeMatrix reference-point -S results_ChIP_WT_Pol2/tracks/SRR1916157/SRR1916157^mapped_SC288_with_micron_SC88^K4V2CT.vs-SRR1916162.bw -R HSC_73.bed2  --beforeRegionStartLength 20000  --regionBodyLength 10  --afterRegionStartLength 20000  --sortRegions keep -o heatmap.gz
 
-plotHeatmap -m heatmap.gz -out heat_map_pol2_best.pdf --colorMap Blues_r --missingDataColor grey  --sortRegions keep  --zMin 0.6 --zMax 1.2 --interpolationMethod  nearest
+plotHeatmap -m heatmap.gz -out heat_map_pol2_b.pdf --colorMap Blues_r --missingDataColor grey  --sortRegions keep  --zMin 0.6 --zMax 1.2 --interpolationMethod  nearest
 
+```
+#Plot for the gene boxes: 
+Use gene_boxes.py
+```bash
+pdfjam $(ls -v  window7_gene_*.pdf) --nup 1x73 --landscape --outfile Page12_win_genes7.pdf
 ```
 
 
