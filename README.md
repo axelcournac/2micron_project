@@ -103,7 +103,7 @@ computeMatrix reference-point -S results_ChIP_WT_Pol2/tracks/SRR1916157/SRR19161
 plotHeatmap -m heatmap.gz -out heat_map_pol2_b.pdf --colorMap Blues_r --missingDataColor grey  --sortRegions keep  --zMin 0.6 --zMax 1.2 --interpolationMethod  nearest
 
 ```
-#Plot for the gene boxes: 
+#### Plot for the gene boxes: 
 Use gene_boxes.py
 ```bash
 pdfjam $(ls -v  window7_gene_*.pdf) --nup 1x73 --landscape --outfile Page12_win_genes7.pdf
