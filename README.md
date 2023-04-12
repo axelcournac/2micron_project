@@ -148,7 +148,7 @@ python3 plot_agglo_HSC2_norm2_arg_n.py  2 $file1 $file2 $name1 $name2
 
 ### Generation and visualisation of scatter plot for the ChIP-exo libraries
 
-After alignment with bowtie2 of the 1251 libraries, we filterd the reads with MQ>0 and then process all the files: 
+After alignment with bowtie2 of the 1251 libraries, we filtered the reads with MQ>0 and then process all the files: 
 
 ```bash
 #!/bin/bash
