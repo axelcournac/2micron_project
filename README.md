@@ -30,7 +30,7 @@ For windows, you can have a look to https://www.python.org/downloads/windows/. T
 #### Data extraction
 Data can be dowloaded on Short Read Archive server at the following address **http://www.ncbi.nlm.nih.gov/sra**.
 
-A SRA executable called fastq-dump from SRA can be used to extract and split both mates of a library (to use it, you can go with your terminal to the directory containg the executables files by using the bash command cd).Then the program can be used like this:  /fastq-dump library_identification --split-3 -O /path_to_a_directory
+A SRA executable called fastq-dump from SRA toolkit can be used to download and split both mates of a NGS library: 
  
 ```bash
 ./fastq-dump SRR639031 --split-3 -O /home/data/
@@ -39,14 +39,14 @@ A SRA executable called fastq-dump from SRA can be used to extract and split bot
 #### Alignment of the Hi-C libraries
 To align the reads and generate the contact files in cool format, we used hicstuff pipeline: 
 ```bash
-hicstuff pipeline -t 18 -i -D -a bowtie2 --matfmt bg2 --no-cleanup -F -p -o out_Micro-C_WT_log_classic_genome  -g SC288_with_micron SRR7939017.1_1.fastq SRR7939017.1_2.fastq
+hicstuff pipeline -t 18 --mapping="iterative" -D -a bowtie2 --matfmt bg2 --no-cleanup -F -p -o out_Micro-C_WT_log_classic_genome  -g SC288_with_micron SRR7939017.1_1.fastq SRR7939017.1_2.fastq
 ```
 and convert into cool file:
 ```bash
 cooler cload pairs -c1 2 -p1 3 -c2 4 -p2 5 sacCer3.chr_sizes.txt:200 valid_idx_pcrfree.pairs valid_idx_pcrfree.pairs.cool
 ```
 
-### Processing of genomic data like Mnase-seq, ChIP-seq or RNA-seq
+### Processing of genomic data like Mnase-seq, RNA-seq or ChIP-seq 
 We used tinyMapper: 
 ```bash
 ./tinyMapper.sh -m MNase -s SRR5399542.1 -g SC288_with_micron -o results_H3_CC 
@@ -61,30 +61,22 @@ We used tinyMapper:
 
 ### Visualisation of contact maps with plasmid signal
 
-#### Alignment 
-
-```bash
-hicstuff pipeline -t 18 --read-len=50  -D -a bowtie2 -e DpnII,HinfI --matfmt bg2 --no-cleanup -F -p -o out2_pKan-STB-P -g SC288_with_pKan-STB-P     FG104_S2_R1_001.fastq.gz FG104_S2_R2_001.fastq.gz
-```
-#### Convertion into cool file:
-```bash
-cooler cload pairs --zero-based -c1 1 -p1 2 -c2 4 -p2 5 /sacCer3.chr_sizes.txt:2000  out2_pKan-STB-P/tmp/valid_idx_pcrfree.pairs  out2_pKan-STB-P/tmp/valid_idx_pcrfree.pairs.cool 
-```
+We used home python code to plot contact maps and signal of 2 micron plasmid. 
 
 #### Visualisation of contact maps
 ```bash
-python3 plasmid_micron2_hot_spots_ARG1.py out2_pKan-STB-P/tmp/valid_idx_pcrfree.pairs.cool     pKan-STB-P     pKan-STB-P
+python3 plasmid_micron2_hot_spots_ARG1.py out2_pKan-STB-P/tmp/valid_idx_pcrfree.pairs.cool  pKan-STB-P pKan-STB-P
 python3 plasmid_micron_its_Map.py  valid_idx_pcrfree.pairs.cool.200 plasmid_p2-micron micro-C-log
 ```
 To have the 1D enrichment plot for contact signal of the plasmid:
 
 ```bash
- python3 plasmid_HSC_1D_agglo_norm2.py  valid_idx_pcrfree.pairs.cool plasmid_p2-micron topo2 HSC_plasmids_in_Micro-C_WT_log_SC288_genome.txt.sort.formated
+python3 plasmid_HSC_1D_agglo_norm3.py  valid_idx_pcrfree.pairs.cool plasmid_p2-micron topo2 HSC_plasmids_in_Micro-C_WT_log_SC288_genome.txt.sort.formated
  ```
  
 To automatically detect the peaks of contact between plasmid and yeast chromosomes, we use plasmid_micron2_hot_spots_ARG1_fig_sup1_norm3.py 
 
-#### Plot of genomic signals agglomerated around hot spots of contact: 
+#### Averaged plot of genomic signals around hot spots of contact: 
 
 ```bash
 python plasmid_micron2_Chip-seq_ARG5.py SRR13736589.bis.fastq.sam.MQ0 SRR13736587.bis.fastq.sam.MQ0 H3_log H3_log
@@ -94,7 +86,7 @@ python plasmid_micron2_Chip-seq_ARG5_1Mnase.py SRR7692240.1_1.fastq.gz.sam.MQ0 R
 python plasmid_micron2_Chip-seq_ARG5_1Mnase.py SRR6246290.1.bis_1.fastq.sam.MQ0 ATAC_WT
 ```
 
-#### Computation of pileup plot on the 73 loci contacted by 2u plasmid: 
+#### Computation of aggregated plots around the 73 loci contacted by 2u plasmid:
 
 ```bash
 computeMatrix scale-regions  -S  Micro-C_WT_log_interpolated.bw -R HSC_73.bed2  --beforeRegionStartLength 20000  --regionBodyLength 10  --afterRegionStartLength 20000  --sortRegions keep -o heatmap.gz
@@ -108,14 +100,14 @@ plotHeatmap -m heatmap.gz -out heat_map_pol2_b.pdf --colorMap Blues_r --missingD
 
 ```
 #### Plot for the gene boxes: 
-Use gene_boxes.py
+Use home made python code gene_boxes.py
 ```bash
 pdfjam $(ls -v  window7_gene_*.pdf) --nup 1x73 --landscape --outfile Page12_win_genes7.pdf
 ```
 
 
 #### Computation of pileup plot according the gene structure: 
-creation of bw file with the python code create_big_wig.py then
+First, we create of bw file for the contact signal with the python code create_big_wig.py then
 
 ```bash
 
@@ -127,13 +119,14 @@ plotProfile -m signal_2u_genes.gz -out Profile_contact_long_genes.pdf --numPlots
 #### 
 To plot the agglomerated plots of contact signal around centromeres: 
 ```bash
-python3 plasmid_HSC_1D_agglo_norm2.py  valid_idx_pcrfree.pairs.cool  plasmid_p2-micron log_centros centro1.dat55
+python3 plasmid_HSC_1D_agglo_norm3.py  valid_idx_pcrfree.pairs.cool  plasmid_p2-micron log_centros centro1.dat55
 ```
 
 ### Generation and comparison of agglomerated plot of contact signal of 2 micron:
+To automate the visualization and comparison of the average contact signal between 2 biological conditions, we use a home made script in bash. 
 
 ```bash
-file_set_positions="/home/axel/Bureau/figure_all_chrms_sup1/redone_norm3/th_08/HSC_plasmids_in_Micro-C_WT_log_SC288_genome.txt.sort.formated"
+file_set_positions="HSC_plasmids_in_Micro-C_WT_log_SC288_genome.txt.sort.formated"
 cool_file1="out_FG01/tmp/valid_idx_pcrfree.pairs.2000.cool"
 cool_file2="out_FG02_4/tmp/valid_idx_pcrfree.pairs.2000.cool"
 
