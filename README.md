@@ -89,6 +89,8 @@ To automatically detect the peaks of contact between plasmid and yeast chromosom
 ```bash
 python plasmid_micron2_Chip-seq_ARG5.py SRR13736589.bis.fastq.sam.MQ0 SRR13736587.bis.fastq.sam.MQ0 H3_log H3_log
 
+python plasmid_micron2_Chip-seq_ARG5_1Mnase.py SRR7692240.1_1.fastq.gz.sam.MQ0 RNAseq RNAseq # with log 
+
 python plasmid_micron2_Chip-seq_ARG5_1Mnase.py SRR6246290.1.bis_1.fastq.sam.MQ0 ATAC_WT
 ```
 
