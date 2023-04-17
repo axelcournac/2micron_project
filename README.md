@@ -25,6 +25,8 @@ For windows, you can have a look to https://www.python.org/downloads/windows/. T
 * `RIdeogram` / [RIdeogram](https://cran.r-project.org/web/packages/RIdeogram/vignettes/RIdeogram.html)
 * `seqkit`   /   [seqkit](https://bioinf.shenwei.me/seqkit/)
 * `dnaglider`   /   [dnaglider](https://github.com/cmdoret/dnaglider)
+* `pyBigWig`   /   [pyBigWig](https://github.com/deeptools/pyBigWig)
+
 
 ### Raw data extraction and alignment
 #### Data extraction
