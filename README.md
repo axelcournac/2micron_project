@@ -96,10 +96,10 @@ computeMatrix scale-regions  -S  Micro-C_WT_log_interpolated.bw -R HSC_73.bed2  
 plotHeatmap -m heatmap.gz -out heat_map_contact_best.pdf --colorMap afmhot_r  --missingDataColor white --sortRegions keep
 
 
-computeMatrix reference-point -S results_ChIP_WT_Pol2/tracks/SRR1916157/SRR1916157^mapped_SC288_with_micron_SC88^K4V2CT.vs-SRR1916162.bw -R HSC_73.bed2  --beforeRegionStartLength 20000  --regionBodyLength 10  --afterRegionStartLength 20000  --sortRegions keep -o heatmap.gz
 
-plotHeatmap -m heatmap.gz -out heat_map_pol2_b.pdf --colorMap Blues_r --missingDataColor grey  --sortRegions keep  --zMin 0.6 --zMax 1.2 --interpolationMethod  nearest
+computeMatrix scale-regions -S SRR14693235.bis^mapped_SC288_with_micron_SC88^ZW95QD.unstranded.CPM.bw -R HSC_plasmids_in_Micro-C_WT_log_SC288_genome.txt.sort.formated.bed --beforeRegionStartLength 20000  --regionBodyLength 10  --afterRegionStartLength 20000  --skipZeros -o heatmap.gz
 
+plotHeatmap -m heatmap.gz -out heat_map_pol2_test4.pdf --colorMap Blues --missingDataColor grey  --sortRegions keep  --zMin 0. --zMax 20.0 --interpolationMethod  nearest
 ```
 #### Plot for the gene boxes: 
 Use home made python code gene_boxes.py
