@@ -1,4 +1,4 @@
-#  µproject
+#  2µ project
 
 Codes and scripts to reproduce the analyses and plots. 
 
