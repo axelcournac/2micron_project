@@ -4,6 +4,7 @@
 Created on Thu Apr 13 13:33:39 2023
 @author: axel
 To compute overlab between contacted regions and TY (Transposons of Yeast)
+or sub-telomeric regions 
 """
 
 import pandas as pd
@@ -13,7 +14,7 @@ import matplotlib.pyplot as plt
 
 
 # contact regions by 2mu:
-file="/home/axel/Bureau/figure_all_chrms_sup1/redone_norm3/th_08/HSC_plasmids_in_Micro-C_WT_log_SC288_genome.txt.sort2"
+file="/home/axel/Bureau/paper_2u_july_2024/HSC_plasmids_in_Micro-C_WT_log_SC288_genome.txt.sort2"
 df= pd.read_table(file)
 
 #rename of columns:
@@ -21,13 +22,15 @@ df.rename(columns = {'chrom1':'Chromosome'}, inplace = True)
 df.rename(columns = {'start1':'Start'}, inplace = True)
 df.rename(columns = {'end1':'End'}, inplace = True)
         
-# TY regions:
-file2="/home/axel/Bureau/YEAST/TY/positions_TY.txt"
+# TY regions or sub-telos:
+# file2="/home/axel/Bureau/YEAST/TY/positions_TY.txt"
+file2="/home/axel/Bureau/YEAST/sacCer3.sub_telo.txt2.30000.txt2"
+
 df2= pd.read_table(file2)
 
 # dictionary of sizes of chromosomes
 sizes = pd.read_table("/home/axel/Bureau/YEAST/agnes_test/sacCer3_with_plasmid_2micron/sacCer3.chr_sizes.txt",
-                      header=None, delimiter="\t") 
+                      header=None, delimiter="\t")
 zipbObj = zip(sizes[0], sizes[1])
 sizes_dist = dict(zipbObj)
 sizes_dist.popitem()
@@ -57,11 +60,25 @@ for r in range(1000):
 
 
 len(list_random)
+np.mean(list_random)
 
 # plot:
 plt.hist(list_random,range(np.max(list_random)+2))
 plt.xlabel("Number of overlaps")
 plt.ylabel("Number of occurences")
 plt.title("1000 Random groups")
+
+  
+array_random=np.array(list_random)
+len(array_random[array_random>=14])
+
+
+
+
+
+
+
+
+
 
 
