@@ -51,13 +51,13 @@ cooler cload pairs -c1 2 -p1 3 -c2 4 -p2 5 sacCer3.chr_sizes.txt:200 valid_idx_p
 ### Processing of genomic data like Mnase-seq, RNA-seq or ChIP-seq 
 We used tinyMapper: 
 ```bash
-./tinyMapper.sh -m MNase -s SRR5399542.1 -g SC288_with_micron -o results_H3_CC 
+./tinyMapper.sh -m MNase -s SRR5399542.1 -g S288C_with_micron -o results_H3_CC 
 
-./tinyMapper.sh -m RNA -s SRR7692240.1 -g SC288_with_micron_SC88 -o results_RNAseq
+./tinyMapper.sh -m RNA -s SRR7692240.1 -g S288C_with_micron -o results_RNAseq
 
-./tinyMapper.sh -m MNase -s SRR11235539.1 -g SC288_with_micron_SC88 -o results_ATAC-seq
+./tinyMapper.sh -m MNase -s SRR11235539.1 -g S288C_with_micron -o results_ATAC-seq
 
-./tinyMapper.sh -m ChIP -s SRR7175393.1 -i SRR7175394.1 -g SC288_with_micron_SC88 -o results_CHIP_Rpb3
+./tinyMapper.sh -m ChIP -s SRR7175393.1 -i SRR7175394.1 -g S288C_with_micron -o results_CHIP_Rpb3
 
 ```
 
