@@ -264,7 +264,7 @@ for chr1 in list_chr :
     for i in range(len(pos1)):
         rectangle = plt.Rectangle( (min(pos1[i],pos2[i])/BIN,0.0),
                                   abs(pos2[i]-pos1[i])/BIN, 
-                                  limit_y/4, 
+                                  0.1, 
                                   fc="grey")
         plt.gca().add_patch(rectangle)
 
@@ -302,6 +302,7 @@ for chr1 in list_chr :
                                        coverage_plasmid[l1]), axis=0)
     plt.savefig(name_bank+"_files"+"/MAT_SCN_"+chr1+"_"+
             name_bank+"_"+str(BIN/1000)+"kb"+".pdf")
+    plt.close("all")
 
 
 # writting of all hot spots of contact in one file:
@@ -316,6 +317,3 @@ df_all = pd.DataFrame(
 
 df_all.to_csv("contact_signal2_"+chr2+"_"+name_bank+".txt", sep='\t',
                 index=False,na_rep='NA')
-
-
-
