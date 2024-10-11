@@ -5,14 +5,14 @@ from statsmodels.stats.proportion import proportions_chisquare
 import pandas as pd
 
 
-# Charger le fichier CSV dans un DataFrame
+# fichier CSV dans un DataFrame
 file_path = "/home/axel/Bureau/stabilities_2024/stability_cinetic2.csv"  # Remplacez par le chemin vers votre fichier CSV
 df = pd.read_csv(file_path)
 
 # Renommer les colonnes en fonction des points temporels
 df.columns = ['souche', 'replicat', 'condition', 'time_0h', 'time_6h', 'time_12h', 'time_24h']
 
-# Convertir le DataFrame en dictionnaire avec les listes pour chaque colonne
+# DataFrame en dictionnaire avec les listes pour chaque colonne
 data = {
     'souche': df['souche'].tolist(),
     'replicat': df['replicat'].tolist(),
@@ -22,10 +22,6 @@ data = {
     'time_12h': df['time_12h'].tolist(),
     'time_24h': df['time_24h'].tolist()
 }
-
-# Afficher le dictionnaire pour vérifier le format
-print(data)
-
 
 
 df = pd.DataFrame(data)
