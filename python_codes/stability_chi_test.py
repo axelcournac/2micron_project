@@ -2,11 +2,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from statsmodels.stats.proportion import proportions_chisquare
+from scipy.stats import chi2_contingency
 import pandas as pd
 
 
 # fichier CSV dans un DataFrame
-file_path = "/home/axel/Bureau/stabilities_2024/stability_cinetic2.csv"  # Remplacez par le chemin vers votre fichier CSV
+file_path = "/home/axel/Bureau/2micron_plasmid_PROJECT/stabilities_2024/stability_cinetic2.csv"  # Remplacez par le chemin vers votre fichier CSV
+# file_path = "/home/axel/Bureau/2micron_plasmid_PROJECT/stabilities_2024/stability_cinetic1and2_merged.csv"  
 df = pd.read_csv(file_path)
 
 # Renommer les colonnes en fonction des points temporels
@@ -45,11 +47,31 @@ for time in ['time_0h', 'time_6h', 'time_12h', 'time_24h']:
 # Réordonner les souches dans l'ordre désiré (WT, 5toA, deltaREP1, deltaSTB)
 ratios['souche'] = pd.Categorical(ratios['souche'], categories=['WT', '5toA', 'deltaREP1', 'deltaSTB'], ordered=True)
 
-# Box plot des ratios pour chaque temps et souche
+# if we want to remove time point 0 :
+ratios = ratios[ratios['time'] != "time_0h"]    
+
+# Box or bar plot des ratios pour chaque temps et souche
 plt.figure(figsize=(12, 8))
-sns.boxplot(x='time', y='ratio', hue='souche', data=ratios, showfliers=False)
-plt.title("Ratios G418/YPD par souche et temps")
+font = {'family' : 'normal',
+        'weight' : 'normal',
+        'size'   : 12}
+
+plt.rc('font', **font)
+
+# sns.boxplot(x='time', y='ratio', hue='souche', data=ratios, showfliers=False)
+
+sns.barplot(x='time', y='ratio', hue='souche',  
+            data=ratios,errorbar="sd", capsize=0.05, dodge=True, linewidth=1.5, 
+            edgecolor='black')
+
+ratios = ratios.reset_index(drop=True)
+
+sns.stripplot(x='time', y='ratio', hue='souche', data=ratios,
+    jitter=True, linewidth=0.5, dodge=True, legend=False)
+
+# plt.title("Ratios G418/YPD par souche et temps")
 plt.ylabel("Proportion of cells having the plasmid")
+plt.xlabel("")
 
 # Calcul des p-values (test du chi-deux sur les proportions) entre les souches WT et 5toA pour chaque point temporel
 time_points = ['time_0h', 'time_6h', 'time_12h', 'time_24h']
@@ -65,7 +87,13 @@ for time in time_points:
     total = [ypd_WT, ypd_5toA]  # Le total est uniquement basé sur YPD
 
     # Test du chi-deux sur les proportions
-    chi2_stat, p_value, _ = proportions_chisquare(count, total)
+    # first function 
+    chi2_stat, p_value1, _ = proportions_chisquare(count , total)    
+    print(f'p = {p_value1:.2e}')
+    
+    res= chi2_contingency([count , total])   # allow to have more precise p-values
+    chi2_stat, p_value = res.statistic, res.pvalue
+    print(f'p = {p_value:.2e}')
     
     # Affichage des p-values sur le plot au-dessus de chaque point temporel
     plt.text(time_points.index(time), 0.6, f'p = {p_value:.2e}', ha='center', fontsize=12)
@@ -73,3 +101,16 @@ for time in time_points:
 # Ajustement des limites de l'axe Y pour placer correctement les p-values
 plt.ylim(0, ratios['ratio'].max() + 0.2)
 plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
